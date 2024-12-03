@@ -2,7 +2,7 @@ import '../styles/formstyles.css'
 
 export function renderForms(){
     const formsHTML = `
-     <div class="container">
+     <div class="container form">
             <div class="mb-3">
                 <input type="text" class="form-control task-input" id="exampleFormControlInput1" placeholder="Task...">
               </div>
