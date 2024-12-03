@@ -15,15 +15,16 @@ export function loadFromStorage() {
       description: "Set a new task to complete",
       date: "2024-12-04", //maybe use dayjs later for this
       uId: "1",
+      completed: false,
     },
   ];
 }
 
 export function addTask(task) {
   taskList.push(task);
-  // console.log(taskList)
-
+  console.log(taskList);
   saveToStorage();
+  console.log(taskList);
   updateProgressBar();
 }
 
@@ -67,4 +68,30 @@ export function editModal(taskId) {
   });
 
   //   document.querySelector('.modal-container').innerHTML = modalHTML
+}
+
+export function checkIfChecked() {
+  document.querySelectorAll(".form-check-input").forEach((checkbox) => {
+    const taskId = checkbox.dataset.uniqueId;
+    checkbox.addEventListener("change", () => {
+      if (checkbox.checked) {
+        taskList.forEach((task) => {
+          if (task.uId === taskId) {
+            task.completed = true;
+          }
+        });
+      } else {
+        taskList.forEach((task) => {
+          if (task.uId === taskId) {
+            task.completed = false;
+          }
+        });
+      }
+
+      console.log(taskId);
+      console.log(taskList);
+      saveToStorage();
+      updateProgressBar();
+    });
+  });
 }

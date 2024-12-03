@@ -25,8 +25,10 @@ export function getTaskfromDOM() {
         description: descriptionValue,
         date: dateValue,
         uId: uniqueId,
+        completed: false,
       });
+      console.log(taskList);
     }
   });
-  console.log(taskList);
+
 }

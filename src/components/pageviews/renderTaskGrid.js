@@ -1,5 +1,5 @@
 import "../styles/taskGrid.css";
-import { removeTask, taskList } from "../js/taskList.js";
+import { removeTask, taskList, checkIfChecked } from "../js/taskList.js";
 import { editModal } from "../js/taskList.js";
 import { updateProgressBar } from "./progressBar.js";
 
@@ -11,7 +11,7 @@ export function renderTaskGrid() {
     taskGridHTML += `
        <div class="col">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="${task.uId}">
+            <input class="form-check-input" type="checkbox" value="" data-unique-id="${task.uId}" ${task.completed? 'checked':''}>
             <div class="task-and-description">
                 <div class="title-and-date">
                     <label class="form-check-task" for="${task.uId}">
@@ -54,4 +54,5 @@ export function renderTaskGrid() {
   });
 
   updateProgressBar();
+  checkIfChecked()
 }
