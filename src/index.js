@@ -9,8 +9,6 @@ renderHeader();
 renderForms();
 progressBar()
 renderTaskGrid()
-
-
 getTaskfromDOM()
 
 

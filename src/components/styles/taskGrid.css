@@ -37,11 +37,13 @@
 .edit-btn{
     background-color: rgb(0, 179, 255);
     color: white;
+    padding: 0px 10px;
 }
 
 .task-and-description{
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 
 .form-check-task{

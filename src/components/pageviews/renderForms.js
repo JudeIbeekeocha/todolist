@@ -22,5 +22,4 @@ export function renderForms(){
         </div>
     `
     document.querySelector('.form-container').innerHTML = formsHTML
-    console.log('Test')
 }
