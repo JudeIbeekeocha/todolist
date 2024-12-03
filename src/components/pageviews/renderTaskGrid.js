@@ -1,6 +1,7 @@
 import "../styles/taskGrid.css";
 import { removeTask, taskList } from "../js/taskList.js";
 import { editModal } from "../js/taskList.js";
+import { updateProgressBar } from "./progressBar.js";
 
 export function renderTaskGrid() {
   document.querySelector(".taskGrid").classList.add("task-grid-container");
@@ -10,15 +11,15 @@ export function renderTaskGrid() {
     taskGridHTML += `
        <div class="col">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" value="" id="${task.uId}">
             <div class="task-and-description">
                 <div class="title-and-date">
-                    <label class="form-check-task" for="flexCheckDefault">
+                    <label class="form-check-task" for="${task.uId}">
                       ${task.task}
                     </label>
                     <div class="date">${task.date}</div>
                 </div>
-                <label class="form-check-description" for="flexCheckDefault">
+                <label class="form-check-description" for="${task.uId}">
                   ${task.description}
                 </label>
             </div>
@@ -48,9 +49,9 @@ export function renderTaskGrid() {
     btn.addEventListener("click", () => {
       const taskId = btn.dataset.uniqueId;
       editModal(taskId);
-
       renderTaskGrid();
-      // console.log(taskList);
     });
   });
+
+  updateProgressBar();
 }

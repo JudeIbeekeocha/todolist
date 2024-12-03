@@ -1,3 +1,5 @@
+import { updateProgressBar } from "../pageviews/progressBar.js";
+
 export let taskList;
 
 loadFromStorage();
@@ -22,6 +24,7 @@ export function addTask(task) {
   // console.log(taskList)
 
   saveToStorage();
+  updateProgressBar();
 }
 
 export function removeTask(taskId) {
@@ -36,6 +39,7 @@ export function removeTask(taskId) {
   taskList = newTaskList;
 
   saveToStorage();
+  updateProgressBar();
 }
 
 export function editModal(taskId) {
