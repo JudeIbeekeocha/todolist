@@ -1,4 +1,5 @@
 import { updateProgressBar } from "../pageviews/progressBar.js";
+import dayjs from "dayjs";
 
 export let taskList;
 
@@ -9,11 +10,12 @@ function saveToStorage() {
 }
 
 export function loadFromStorage() {
+  const formattedDate = dayjs().format("YYYY-MM-DD");
   taskList = JSON.parse(localStorage.getItem("taskList")) || [
     {
-      task: "Set new Task",
-      description: "Set a new task to complete",
-      date: "2024-12-04", //maybe use dayjs later for this
+      task: "What problem am I having? ",
+      description: "How might I solve it?",
+      date: formattedDate, //maybe use dayjs later for this
       uId: "1",
       completed: false,
     },
@@ -22,9 +24,7 @@ export function loadFromStorage() {
 
 export function addTask(task) {
   taskList.push(task);
-  console.log(taskList);
   saveToStorage();
-  console.log(taskList);
   updateProgressBar();
 }
 
@@ -50,20 +50,17 @@ export function editModal(taskId) {
 
   taskList.forEach((task) => {
     if (task.uId === taskId) {
-      console.log(task.uId);
       taskInput.value = task.task
       descriptionInput.value = task.description
       dateInput.value = task.date
 
       document.querySelector('#modalAddTaskButton').addEventListener('click', ()=>{
-        console.log(taskInput.value)
         task.task = taskInput.value
         task.description = descriptionInput.value
         task.date = dateInput.value
 
         saveToStorage()
       })
-      console.log(taskList)
     }
   });
 
@@ -88,8 +85,6 @@ export function checkIfChecked() {
         });
       }
 
-      console.log(taskId);
-      console.log(taskList);
       saveToStorage();
       updateProgressBar();
     });

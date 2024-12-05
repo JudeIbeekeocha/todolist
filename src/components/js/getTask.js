@@ -27,7 +27,6 @@ export function getTaskfromDOM() {
         uId: uniqueId,
         completed: false,
       });
-      console.log(taskList);
     }
   });
 

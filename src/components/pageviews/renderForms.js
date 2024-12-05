@@ -5,10 +5,10 @@ export function renderForms(){
      <div class="container form">
             <form id="taskForm">
               <div class="mb-3">
-                  <input type="text" class="form-control task-input" id="taskInput" placeholder="Task..." required>
+                  <input type="text" class="form-control task-input" id="taskInput" placeholder="Problem..." required>
                 </div>
                 <div class="mb-3">
-                  <textarea class="form-control text-area" id="descriptionInput" rows="2"></textarea>
+                  <textarea class="form-control text-area" id="descriptionInput" rows="2" placeholder="Description..."></textarea>
                 </div>
                 <div class="date-button-field">
                     <div class="date">

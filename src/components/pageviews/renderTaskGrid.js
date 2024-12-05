@@ -39,9 +39,7 @@ export function renderTaskGrid() {
     btn.addEventListener("click", () => {
       const taskId = btn.dataset.uniqueId;
       removeTask(taskId);
-
       renderTaskGrid();
-      console.log(taskList);
     });
   });
 

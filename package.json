@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "dayjs": "^1.11.13",
     "uuid": "^11.0.3",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4"
