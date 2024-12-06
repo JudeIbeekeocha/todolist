@@ -20,6 +20,13 @@ export function loadFromStorage() {
       completed: false,
     },
   ];
+
+  if(taskList){
+    taskList.forEach((task)=>{
+      task.date = dayjs(task.date).format("MM-DD-YYYY")
+    })
+  }
+  saveToStorage();
 }
 
 export function addTask(task) {
