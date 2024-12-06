@@ -10,7 +10,7 @@ function saveToStorage() {
 }
 
 export function loadFromStorage() {
-  const formattedDate = dayjs().format("YYYY-MM-DD");
+  const formattedDate = dayjs().format("MM-DD-YYYY");
   taskList = JSON.parse(localStorage.getItem("taskList")) || [
     {
       task: "What problem am I having? ",
