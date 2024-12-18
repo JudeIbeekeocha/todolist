@@ -24,7 +24,9 @@ export function loadFromStorage() {
 
   if(taskList){
     taskList.forEach((task)=>{
-      task.date = dayjs(task.date).format("MM-DD-YYYY")
+      if(task.date){
+        task.date = dayjs(task.date).format("MM-DD-YYYY")
+      }
     })
   }
   saveToStorage();
@@ -60,7 +62,7 @@ export function editModal(taskId) {
     if (task.uId === taskId) {
       taskInput.value = task.task
       descriptionInput.value = task.description
-      dateInput.value = task.date
+      dateInput.value = dayjs(task.date).format("YYYY-MM-DD")
 
       document.querySelector('#modalAddTaskButton').addEventListener('click', ()=>{
         task.task = taskInput.value
