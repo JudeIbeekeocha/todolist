@@ -1,4 +1,5 @@
 import { updateProgressBar } from "../pageviews/progressBar.js";
+import { renderTaskGrid } from "../pageviews/renderTaskGrid.js";
 import dayjs from "dayjs";
 
 export let taskList;
@@ -30,7 +31,7 @@ export function loadFromStorage() {
 }
 
 export function addTask(task) {
-  taskList.push(task);
+  taskList.unshift(task);
   saveToStorage();
   updateProgressBar();
 }
@@ -92,8 +93,19 @@ export function checkIfChecked() {
         });
       }
 
-      saveToStorage();
+      sortTasks();
       updateProgressBar();
     });
   });
+}
+
+export function sortTasks(){
+  // Separate completed and incomplete tasks
+  const incompleteTasks = taskList.filter((task) => !task.completed);
+  const completedTask = taskList.filter((task) => task.completed);
+
+  // Merge them with incompleted tasks first
+  taskList = [...incompleteTasks, ...completedTask];
+  saveToStorage();
+  renderTaskGrid()
 }
